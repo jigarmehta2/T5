@@ -1,0 +1,21 @@
+!python -m torch.distributed.launch --nproc_per_node=2 /mnt/home/NLP/transformers/examples/question-answering/run_squad.py \
+  --version_2_with_negative \
+  --model_type albert \
+  --model_name_or_path /mnt/home/NLP/NLP_models/albert-xlarge/ \
+  --output_dir /mnt/home/NLP/output/ \
+  --overwrite_output_dir \
+  --do_train \
+  --do_eval \
+  --do_lower_case \
+  --train_file /mnt/home/NLP/datasets/SQUAD/train-v2.0.json \
+  --predict_file /mnt/home/NLP/datasets/SQUAD/dev-v2.0.json \
+  --per_gpu_train_batch_size 3 \
+  --per_gpu_eval_batch_size 3 \
+  --learning_rate 3e-5 \
+  --num_train_epochs 2 \
+  --max_seq_length 384 \
+  --doc_stride 128 \
+  --save_steps 4000 \
+  --warmup_steps 814 \
+  --fp16 \
+  --gradient_accumulation_steps 4 
